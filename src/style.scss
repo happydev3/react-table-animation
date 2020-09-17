@@ -1,0 +1,48 @@
+.animation-card {
+    width: 100%;
+    margin-bottom: 15px;
+    max-height: 340px;
+    opacity: 1;
+    transition: opacity 1s ease-in;
+    // animation: rotateIn 1s linear;
+}
+
+.animation-card:hover {
+    cursor: pointer;
+    animation: heartBeat 1s !important;
+    box-shadow: 0 0 10px 2px rgba(0, 140, 186, 0.5);
+}
+
+.add-animation {
+    animation: bounceInUp 1s !important;
+    margin-bottom: 15px;
+}
+
+.loader-4 {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    animation: loader-4 1s ease infinite;
+    top: 100%;
+    margin: -30px auto 0 auto;
+  }
+  
+  @-webkit-keyframes loader-4 {
+    0%, 100% {
+      box-shadow: -10px 15px 0 orangered, 10px 15px 0 rgba(orangered, 0.2), 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 rgba(orangered, 0.2); }
+    25% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 orangered, 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 rgba(orangered, 0.2); }
+    50% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 rgba(orangered, 0.2), 13px 46px 0 orangered, -10px 36px 0 rgba(orangered, 0.2); }
+    75% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 rgba(orangered, 0.2), 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 orangered; } }
+  
+  @keyframes loader-4 {
+    0%, 100% {
+      box-shadow: -10px 15px 0 orangered, 10px 15px 0 rgba(orangered, 0.2), 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 rgba(orangered, 0.2); }
+    25% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 orangered, 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 rgba(orangered, 0.2); }
+    50% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 rgba(orangered, 0.2), 10px 36px 0 orangered, -10px 36px 0 rgba(orangered, 0.2); }
+    75% {
+      box-shadow: -10px 15px 0 rgba(orangered, 0.2), 10px 15px 0 rgba(orangered, 0.2), 10px 36px 0 rgba(orangered, 0.2), -10px 36px 0 orangered; } }
