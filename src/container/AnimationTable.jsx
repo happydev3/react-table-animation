@@ -66,42 +66,42 @@ const AnimationTable = () => {
         console.log(document.querySelector('#input-with-icon-textfield'));
         setGender(e.target.value);
         setPage(1);
-        setLoading(true);
+        // setLoading(true);
         if(e.target.value === 'all') {
-            setTimeout(() => setLoading(false), 1000);
+            // setTimeout(() => setLoading(false), 1000);
             setProfiles(profiledbs.data.slice(0,12));
         } else {
-            setTimeout(() => setLoading(false), 1000);
+            // setTimeout(() => setLoading(false), 1000);
             setProfiles(profiledbs.data.filter((profile) => e.target.value === profile.gender).slice(0,12));
         }
     }
 
     const handlePageChange = (event, newPage) => {
         setPage(newPage);
-        setLoading(true);
+        // setLoading(true);
         if(newPage === 1) {
             if(gender === 'all') {
-                setTimeout(() => setLoading(false), 1000);
+                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.slice(0,12));
             } else {
-                setTimeout(() => setLoading(false), 1000);
+                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.filter((profile) => gender === profile.gender).slice(0,12));
             }
         } else if(newPage > 1) {
             if(gender === 'all') {
-                setTimeout(() => setLoading(false), 1000);
+                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.slice(13+(newPage-2)*12, 1+newPage*12));
             } else {
-                setTimeout(() => setLoading(false), 1000);
+                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.filter((profile) => gender === profile.gender).slice(13+(newPage-2)*12, 1+newPage*12));
             }
         }
     }
 
     const textSearch = (e) => {
-        setLoading(true);
+        // setLoading(true);
         setPage(1);
-        setTimeout(() => setLoading(false), 1000);
+        // setTimeout(() => setLoading(false), 1000);
         const filterProfile = profiledbs.data.filter((profile) => profile.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.address.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.ID.indexOf(e.target.value) !== -1 || profile.gender.indexOf(e.target.value.toLowerCase()) !== -1);
         if(gender === 'all') {
             setProfiles(filterProfile.slice(0,12));
@@ -160,7 +160,7 @@ const AnimationTable = () => {
                             profiles.map((profile, index) => {
                                 return (
                                         <div className="col-lg-3 col-md-4 col-sm-6 col-12 col-xs-12" key={index}>
-                                            <div style={{animation: `${animations[parseInt(10*Math.random())]} ${1*Math.random()}s linear`}}>
+                                            <div style={{animation: `${animations[Math.round(Math.random()*18)]} ${1*Math.random()}s linear`}}>
                                                 <CardBox profile={profile}/>
                                             </div>
                                         </div>

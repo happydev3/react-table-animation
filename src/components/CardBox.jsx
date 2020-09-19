@@ -12,9 +12,14 @@ import Female from '../assets/images/female.jpg';
 import Male from '../assets/images/male.jpg';
 
 const CardBox = (props) => {
+
+    const [isShown, setIsShown] = React.useState(false);
  
     return (
-        <Card className='animation-card'>
+        <Card className={`animation-card ${isShown ? 'is-shown-footer' : ''}`}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}
+        >
             <CardHeader
                 avatar={
                 <Avatar aria-label="recipe">
@@ -34,9 +39,9 @@ const CardBox = (props) => {
                     {props.profile.address}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing>
-                <Button>Share</Button>
-                <Button>Learn More</Button>
+            <CardActions disableSpacing className={'card-footer'}>
+                        <Button>Share</Button>
+                        <Button>Learn More</Button>
             </CardActions>
         </Card>
     )
