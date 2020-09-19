@@ -66,42 +66,32 @@ const AnimationTable = () => {
         console.log(document.querySelector('#input-with-icon-textfield'));
         setGender(e.target.value);
         setPage(1);
-        // setLoading(true);
         if(e.target.value === 'all') {
-            // setTimeout(() => setLoading(false), 1000);
             setProfiles(profiledbs.data.slice(0,12));
         } else {
-            // setTimeout(() => setLoading(false), 1000);
             setProfiles(profiledbs.data.filter((profile) => e.target.value === profile.gender).slice(0,12));
         }
     }
 
     const handlePageChange = (event, newPage) => {
         setPage(newPage);
-        // setLoading(true);
         if(newPage === 1) {
             if(gender === 'all') {
-                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.slice(0,12));
             } else {
-                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.filter((profile) => gender === profile.gender).slice(0,12));
             }
         } else if(newPage > 1) {
             if(gender === 'all') {
-                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.slice(13+(newPage-2)*12, 1+newPage*12));
             } else {
-                // setTimeout(() => setLoading(false), 1000);
                 setProfiles(profiledbs.data.filter((profile) => gender === profile.gender).slice(13+(newPage-2)*12, 1+newPage*12));
             }
         }
     }
 
     const textSearch = (e) => {
-        // setLoading(true);
         setPage(1);
-        // setTimeout(() => setLoading(false), 1000);
         const filterProfile = profiledbs.data.filter((profile) => profile.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.address.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.ID.indexOf(e.target.value) !== -1 || profile.gender.indexOf(e.target.value.toLowerCase()) !== -1);
         if(gender === 'all') {
             setProfiles(filterProfile.slice(0,12));
