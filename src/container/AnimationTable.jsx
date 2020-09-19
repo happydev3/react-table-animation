@@ -7,8 +7,6 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import Search from '@material-ui/icons/Search';
 import NativeSelect from '@material-ui/core/NativeSelect';
-import Zoom from '@material-ui/core/Zoom';
-import ParticlesBg from 'particles-bg'
 import profiledbs from './profiles.js';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +29,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const animations = [
+    'flip',
+    'rotateIn',
+    'rotateOut',
+    'zoomIn',
+    'zoomInLeft',
+    'slideInLeft',
+    'zoomInUp',
+    'rollIn',
+    'lightSpeedInRight',
+    'fadeInBottomLeft',
+    'fadeInBottomRight',
+    'fadeInTopLeft',
+    'fadeInTopRight',
+    'bounceOut',
+    'bounceInUp',
+    'bounceInDown',
+    'backInDown',
+    'heartBeat'
+]
+
 const AnimationTable = () => {
     const classes = useStyles();
     const [count, setCount] = React.useState((profiledbs.data.length%12 ? 1 : 0) + parseInt(profiledbs.data.length/12));
@@ -38,13 +57,13 @@ const AnimationTable = () => {
     const [profiles, setProfiles] = React.useState(profiledbs.data.slice(0,12));
     const [page, setPage] = React.useState(1);
     const [loading, setLoading] = React.useState(true);
-    const [checked, setChecked] = React.useState(true);
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 1000);
     });
 
     const filterChange = (e) => {
+        console.log(document.querySelector('#input-with-icon-textfield'));
         setGender(e.target.value);
         setPage(1);
         setLoading(true);
@@ -84,12 +103,15 @@ const AnimationTable = () => {
         setPage(1);
         setTimeout(() => setLoading(false), 1000);
         const filterProfile = profiledbs.data.filter((profile) => profile.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.address.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || profile.ID.indexOf(e.target.value) !== -1 || profile.gender.indexOf(e.target.value.toLowerCase()) !== -1);
-        setProfiles(filterProfile.slice(0,12));
+        if(gender === 'all') {
+            setProfiles(filterProfile.slice(0,12));
+        } else {
+            setProfiles(filterProfile.filter((profile) => profile.gender === gender).slice(0,12));
+        }
     }
 
     return (
         <>
-            <ParticlesBg type="square" bg={true} />
             <Card className="mb-2 pl-2 pr-2 pb-1 pt-1" style={{background: 'transparent'}}>
                 <div className="float-right">
                     <TextField
@@ -137,9 +159,11 @@ const AnimationTable = () => {
                         {
                             profiles.map((profile, index) => {
                                 return (
-                                    <div className="col-lg-3 col-md-4 col-sm-6 col-12 col-xs-12" key={index}>
-                                        <CardBox profile={profile} />
-                                    </div>
+                                        <div className="col-lg-3 col-md-4 col-sm-6 col-12 col-xs-12" key={index}>
+                                            <div style={{animation: `${animations[parseInt(10*Math.random())]} ${1*Math.random()}s linear`}}>
+                                                <CardBox profile={profile}/>
+                                            </div>
+                                        </div>
                                 )
                             })
                         }
