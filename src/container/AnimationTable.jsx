@@ -30,24 +30,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const animations = [
-    'flip',
-    'rotateIn',
-    'rotateOut',
     'zoomIn',
+    'zoomInDown',
     'zoomInLeft',
-    'slideInLeft',
+    'zoomInRight',
     'zoomInUp',
-    'rollIn',
-    'lightSpeedInRight',
-    'fadeInBottomLeft',
-    'fadeInBottomRight',
+    'fadeInLeft',
+    'fadeInRight',
     'fadeInTopLeft',
-    'fadeInTopRight',
-    'bounceOut',
-    'bounceInUp',
-    'bounceInDown',
-    'backInDown',
-    'heartBeat'
+    'fadeInTopRight'
 ]
 
 const AnimationTable = () => {
@@ -63,7 +54,6 @@ const AnimationTable = () => {
     });
 
     const filterChange = (e) => {
-        console.log(document.querySelector('#input-with-icon-textfield'));
         setGender(e.target.value);
         setPage(1);
         if(e.target.value === 'all') {
@@ -150,7 +140,7 @@ const AnimationTable = () => {
                             profiles.map((profile, index) => {
                                 return (
                                         <div className="col-lg-3 col-md-4 col-sm-6 col-12 col-xs-12" key={index}>
-                                            <div style={{animation: `${animations[Math.round(Math.random()*18)]} ${1*Math.random()}s linear`}}>
+                                            <div style={{animationName: `${['zoomOutDown','zoomOutUp', 'zoomOut'][Math.round(Math.random()*2)]}, ${animations[Math.round(Math.random()*8)]}`, animationDuration: '1000ms, 500ms', animationDelay: '0ms, 1000ms', animationTimingFunction: 'ease-in, ease-out', animationIterationCount: '1, 1'}}>
                                                 <CardBox profile={profile}/>
                                             </div>
                                         </div>
